@@ -1,0 +1,104 @@
+<sospreadsheet>
+    <options/>
+    <sheet root="true">
+        <styles/>
+        <sheet name="corners">
+            <label name="a" row="3" col="2"/>
+            <label name="b" row="6" col="1"/>
+            <code row="3" col="1">1</code>
+            <code row="3" col="2">2</code>
+            <code row="4" col="1">3</code>
+            <code row="4" col="2">4</code>
+            <code row="5" col="1">5</code>
+            <code row="5" col="2">6</code>
+            <code row="6" col="1">7</code>
+            <code row="6" col="2">8</code>
+            <code row="7" col="1">9</code>
+            <code row="7" col="2">10</code>
+            <code row="7" col="3">11</code>
+            <code row="10" col="1">"BottomRight(a,b)"</code>
+            <code row="10" col="2">BottomRight(a,b)</code>
+            <code row="11" col="1">"TopLeft(a,b)"</code>
+            <code row="11" col="2">TopLeft(a,b)</code>
+            <code row="13" col="1">"GoRight(a)"</code>
+            <code row="13" col="2">GoRight(a)</code>
+            <code row="14" col="1">"GoDown(a)"</code>
+            <code row="14" col="2">GoDown(a)</code>
+            <code row="15" col="1">"GoBottomRight(a)"</code>
+            <code row="15" col="2">GoBottomRight(a)</code>
+            <styles/>
+        </sheet>
+        <sheet name="finances">
+            <label name="incomes" row="3" col="2"/>
+            <label name="styles" row="3" col="5"/>
+            <label name="total" row="3" col="4"/>
+            <code row="2" col="1">"income assuming constant growth"</code>
+            <code row="2" col="6">"highlight years with &gt; 55000 income"</code>
+            <code row="3" col="1">Range(10)</code>
+            <code row="3" col="2">Tile(50000) * Math.Pow(1.02, Range(10))</code>
+            <code row="3" col="4">Sum(#incomes)</code>
+            <code row="3" col="5">"background"</code>
+            <code row="3" col="6">Where(#incomes &gt; Tile(55000), Tile("yellow"), Tile("white"))</code>
+            <styles>
+                <style>
+                    <topleft>incomes</topleft>
+                    <bottomright>Z(incomes)</bottomright>
+                    <scode>styles:GoBottomRight(styles)</scode>
+                </style>
+            </styles>
+        </sheet>
+        <sheet name="people_taxes">
+            <label name="jane_income" row="3" col="2"/>
+            <label name="john_income" row="2" col="2"/>
+            <label name="john_tax" row="2" col="4"/>
+            <code row="2" col="1">"John"</code>
+            <code row="2" col="2">50000</code>
+            <code row="2" col="3">"He donates everything so he pays no taxes!"</code>
+            <code row="2" col="4">tax(john_income, 0, 20000\\30000)</code>
+            <code row="3" col="1">"Jane"</code>
+            <code row="3" col="2">80000</code>
+            <code row="3" col="3">"3 kids, so tax = 50000 * 0.2"</code>
+            <code row="3" col="4">tax(jane_income, 3, 0)</code>
+            <styles/>
+        </sheet>
+        <sheet name="tax">
+            <label name="Return" row="8" col="1"/>
+            <label name="X0" row="2" col="1"/>
+            <label name="X1" row="3" col="1"/>
+            <label name="X2" row="4" col="1"/>
+            <label name="ZX2" row="6" col="1"/>
+            <label name="Zdonations" row="6" col="1"/>
+            <label name="donations" row="4" col="1"/>
+            <label name="nb_children" row="3" col="1"/>
+            <label name="tax" row="8" col="1"/>
+            <label name="total_income" row="2" col="1"/>
+            <code row="2" col="1">100000</code>
+            <code row="3" col="1">2</code>
+            <code row="4" col="1">3000</code>
+            <code row="5" col="1">3000</code>
+            <code row="6" col="1">4000</code>
+            <code row="8" col="1">(total_income - nb_children * 10000 - Sum(#X2)) * 0.2</code>
+            <hbarrier row="6"/>
+            <styles/>
+        </sheet>
+        <sheet name="xml">
+            <label name="Znote_template" row="5" col="4"/>
+            <label name="note_template" row="4" col="2"/>
+            <label name="notebook" row="2" col="1"/>
+            <label name="notes" row="6" col="2"/>
+            <code row="2" col="1">"notebook"</code>
+            <code row="3" col="1">"//"</code>
+            <code row="3" col="2">"// starts a comment"</code>
+            <code row="4" col="1">"//"</code>
+            <code row="4" col="2">"note"</code>
+            <code row="4" col="3">"date="</code>
+            <code row="4" col="4">"{}"</code>
+            <code row="5" col="1">"//"</code>
+            <code row="5" col="3">"="</code>
+            <code row="5" col="4">"{}"</code>
+            <code row="6" col="2">Template(#note_template, "2020-01-01" &amp; "New year!" \\ "2020-06-01" &amp; "Half year!")</code>
+            <code row="11" col="1">ToXml(notebook:Z(notes))</code>
+            <styles/>
+        </sheet>
+    </sheet>
+</sospreadsheet>
