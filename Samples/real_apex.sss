@@ -1,0 +1,30 @@
+<sospreadsheet>
+    <options/>
+    <sheet root="true">
+        <styles/>
+        <sheet name="a">
+            <label name="json" row="0" col="0"/>
+            <label name="jsonstr" row="20" col="0"/>
+            <code row="0" col="0">"chart:"</code>
+            <code row="0" col="1">"type:"</code>
+            <code row="0" col="2">"line"</code>
+            <code row="1" col="0">"series:"</code>
+            <code row="1" col="1">"-"</code>
+            <code row="1" col="2">"name:"</code>
+            <code row="1" col="3">"sales"</code>
+            <code row="2" col="2">"data:"</code>
+            <code row="2" col="3">30 &amp; 40 &amp; 35 &amp; 50 &amp; 49 &amp; 60 &amp; 70 &amp; 91 &amp; 125</code>
+            <code row="3" col="0">"xaxis:"</code>
+            <code row="3" col="1">"categories:"</code>
+            <code row="3" col="2">1991 &amp; 1992 &amp; 1993 &amp; 1994 &amp; 1995 &amp; 1996 &amp; 1997 &amp; 1998 &amp; 1999</code>
+            <code row="20" col="0">ToJson(GrowSE(json))</code>
+            <styles/>
+        </sheet>
+        <node name="apex" type="ApexCharts">
+            <config name="options">a.jsonstr</config>
+        </node>
+        <sheet name="sheet1">
+            <styles/>
+        </sheet>
+    </sheet>
+</sospreadsheet>
