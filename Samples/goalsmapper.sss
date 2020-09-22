@@ -3,15 +3,32 @@
     <sheet root="true">
         <styles/>
         <sheet name="aggregate">
+            <label name="gray" row="2" col="4"/>
+            <label name="green" row="2" col="5"/>
+            <label name="red" row="2" col="6"/>
             <label name="savings" row="2" col="3"/>
             <label name="total_expense" row="2" col="2"/>
             <label name="total_income" row="2" col="1"/>
             <label name="year" row="2" col="0"/>
             <code row="2" col="0">#income.year</code>
-            <code row="2" col="1">SumRow(income.income:GoBottomRight(income.income))</code>
-            <code row="2" col="2">SumRow(expense.expense:GoBottomRight(expense.expense))</code>
+            <code row="2" col="1">SumRow(GrowSE(income.income))</code>
+            <code row="2" col="2">SumRow(GrowSE(expense.expense))</code>
             <code row="2" col="3">CumSum(#total_income - #total_expense)</code>
+            <code row="2" col="4">Where(#total_income &gt; #total_expense, #total_expense, #total_income)</code>
+            <code row="2" col="5">Where(#total_income &gt; #total_expense, #total_income - #total_expense, 0)</code>
+            <code row="2" col="6">Where(#total_income &lt; #total_expense, #total_expense - #total_income, 0)</code>
             <styles/>
+        </sheet>
+        <sheet name="chart">
+            <label name="options" row="2" col="1"/>
+            <code row="2" col="1">"series:"</code>
+            <code row="2" col="2">"-"</code>
+            <code row="2" col="3">"name:"</code>
+            <code row="2" col="4">"churn"</code>
+            <code row="3" col="3">"data:"</code>
+            <code row="3" col="4">#aggregate.gray</code>
+            <styles/>
+            <node name="projection" type="ApexCharts"/>
         </sheet>
         <sheet name="expense">
             <label name="expense" row="3" col="3"/>
@@ -53,52 +70,6 @@
             <code row="26" col="5">10000</code>
             <code row="27" col="4">50000</code>
             <code row="27" col="5">10000</code>
-            <styles/>
-        </sheet>
-        <sheet name="svg">
-            <label name="svg" row="2" col="1"/>
-            <code row="2" col="1">"svg"</code>
-            <code row="2" col="2">"width="</code>
-            <code row="2" col="3">1</code>
-            <code row="3" col="2">"polyline"</code>
-            <code row="3" col="3">"fill="</code>
-            <code row="3" col="4">"none"</code>
-            <code row="3" col="5">"stroke="</code>
-            <code row="3" col="6">"#0074d9"</code>
-            <code row="3" col="7">"stroke-width="</code>
-            <code row="3" col="8">3</code>
-            <code row="3" col="9">"points="</code>
-            <code row="3" col="10">"0,0,100,100,200,300,400,400"</code>
-            <code row="4" col="2">"g"</code>
-            <code row="4" col="3">"class="</code>
-            <code row="4" col="4">"grid"</code>
-            <code row="5" col="3">"line"</code>
-            <code row="5" col="4">"x1="</code>
-            <code row="5" col="5">90</code>
-            <code row="5" col="6">"x2="</code>
-            <code row="5" col="7">90</code>
-            <code row="5" col="8">"y1="</code>
-            <code row="5" col="9">5</code>
-            <code row="5" col="10">"y2="</code>
-            <code row="5" col="11">371</code>
-            <code row="6" col="2">"g"</code>
-            <code row="6" col="3">"class="</code>
-            <code row="6" col="4">"grid"</code>
-            <code row="7" col="3">"line"</code>
-            <code row="7" col="4">"x1="</code>
-            <code row="7" col="5">90</code>
-            <code row="7" col="6">"x2="</code>
-            <code row="7" col="7">705</code>
-            <code row="7" col="8">"y1="</code>
-            <code row="7" col="9">370</code>
-            <code row="7" col="10">"y2="</code>
-            <code row="7" col="11">370</code>
-            <styles/>
-        </sheet>
-        <sheet name="writer">
-            <code row="2" col="1">WriteCsv("goalsmapper.svg", ToXml(svg.svg:GoBottomRight(svg.svg)))</code>
-            <code row="5" col="1">ToXml(svg.svg:GoBottomRight(svg.svg))</code>
-            <code row="7" col="1">GoBottomRight(svg.svg)</code>
             <styles/>
         </sheet>
     </sheet>
