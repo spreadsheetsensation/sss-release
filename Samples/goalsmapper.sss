@@ -20,15 +20,55 @@
             <styles/>
         </sheet>
         <sheet name="chart">
+            <label name="json" row="23" col="1"/>
             <label name="options" row="2" col="1"/>
             <code row="2" col="1">"series:"</code>
             <code row="2" col="2">"-"</code>
             <code row="2" col="3">"name:"</code>
             <code row="2" col="4">"churn"</code>
             <code row="3" col="3">"data:"</code>
-            <code row="3" col="4">#aggregate.gray</code>
+            <code row="3" col="4">T(#aggregate.gray)</code>
+            <code row="4" col="2">"-"</code>
+            <code row="4" col="3">"name:"</code>
+            <code row="4" col="4">"surplus"</code>
+            <code row="5" col="3">"data:"</code>
+            <code row="5" col="4">T(#aggregate.green)</code>
+            <code row="6" col="2">"-"</code>
+            <code row="6" col="3">"name:"</code>
+            <code row="6" col="4">"shortfall"</code>
+            <code row="7" col="3">"data:"</code>
+            <code row="7" col="4">T(#aggregate.red)</code>
+            <code row="8" col="1">"chart:"</code>
+            <code row="8" col="2">"type:"</code>
+            <code row="8" col="3">"bar"</code>
+            <code row="9" col="2">"stacked:"</code>
+            <code row="9" col="3">True</code>
+            <code row="10" col="2">"toolbar:"</code>
+            <code row="10" col="3">"show:"</code>
+            <code row="10" col="4">True</code>
+            <code row="11" col="2">"zoom:"</code>
+            <code row="11" col="3">"enabled:"</code>
+            <code row="11" col="4">True</code>
+            <code row="12" col="1">"plotOptions:"</code>
+            <code row="12" col="2">"bar:"</code>
+            <code row="12" col="3">"horizontal:"</code>
+            <code row="12" col="4">False</code>
+            <code row="13" col="1">"xaxis:"</code>
+            <code row="13" col="2">"categories:"</code>
+            <code row="13" col="3">T(#aggregate.year)</code>
+            <code row="14" col="1">"legend:"</code>
+            <code row="14" col="2">"position:"</code>
+            <code row="14" col="3">"right"</code>
+            <code row="15" col="2">"offset:"</code>
+            <code row="15" col="3">40</code>
+            <code row="16" col="1">"fill:"</code>
+            <code row="16" col="2">"opacity:"</code>
+            <code row="16" col="3">1</code>
+            <code row="23" col="1">ToJson(GrowSE(options))</code>
             <styles/>
-            <node name="projection" type="ApexCharts"/>
+            <node name="projection" type="ApexCharts">
+                <config name="options">chart.json</config>
+            </node>
         </sheet>
         <sheet name="expense">
             <label name="expense" row="3" col="3"/>
