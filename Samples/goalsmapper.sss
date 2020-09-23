@@ -5,11 +5,14 @@
         <sheet name="aggregate">
             <label name="gray" row="2" col="4"/>
             <label name="green" row="2" col="5"/>
-            <label name="red" row="2" col="6"/>
+            <label name="pos_savings" row="2" col="7"/>
+            <label name="red" row="2" col="9"/>
             <label name="savings" row="2" col="3"/>
+            <label name="shortfall" row="2" col="6"/>
             <label name="total_expense" row="2" col="2"/>
             <label name="total_income" row="2" col="1"/>
             <label name="year" row="2" col="0"/>
+            <label name="yellow" row="2" col="8"/>
             <code row="2" col="0">#income.year</code>
             <code row="2" col="1">SumRow(GrowSE(income.income))</code>
             <code row="2" col="2">SumRow(GrowSE(expense.expense))</code>
@@ -17,10 +20,13 @@
             <code row="2" col="4">Where(#total_income &gt; #total_expense, #total_expense, #total_income)</code>
             <code row="2" col="5">Where(#total_income &gt; #total_expense, #total_income - #total_expense, 0)</code>
             <code row="2" col="6">Where(#total_income &lt; #total_expense, #total_expense - #total_income, 0)</code>
+            <code row="2" col="7">Where(#savings &gt; 0, #savings, 0)</code>
+            <code row="2" col="8">Where(#shortfall &gt; #pos_savings, #pos_savings,#shortfall)</code>
+            <code row="2" col="9">#shortfall - #yellow</code>
             <styles/>
         </sheet>
         <sheet name="chart">
-            <label name="json" row="25" col="1"/>
+            <label name="json" row="27" col="1"/>
             <label name="options" row="2" col="1"/>
             <code row="2" col="1">"series:"</code>
             <code row="2" col="2">"-"</code>
@@ -35,48 +41,54 @@
             <code row="5" col="4">T(#aggregate.green)</code>
             <code row="6" col="2">"-"</code>
             <code row="6" col="3">"name:"</code>
-            <code row="6" col="4">"shortfall"</code>
+            <code row="6" col="4">"use_savings"</code>
             <code row="7" col="3">"data:"</code>
-            <code row="7" col="4">T(#aggregate.red)</code>
-            <code row="8" col="1">"chart:"</code>
-            <code row="8" col="2">"type:"</code>
-            <code row="8" col="3">"bar"</code>
-            <code row="9" col="2">"stacked:"</code>
-            <code row="9" col="3">True</code>
-            <code row="10" col="2">"toolbar:"</code>
-            <code row="10" col="3">"show:"</code>
-            <code row="10" col="4">True</code>
-            <code row="11" col="2">"zoom:"</code>
-            <code row="11" col="3">"enabled:"</code>
-            <code row="11" col="4">True</code>
-            <code row="12" col="1">"plotOptions:"</code>
-            <code row="12" col="2">"bar:"</code>
-            <code row="12" col="3">"horizontal:"</code>
-            <code row="12" col="4">False</code>
-            <code row="13" col="1">"xaxis:"</code>
-            <code row="13" col="2">"categories:"</code>
-            <code row="13" col="3">T(#aggregate.year)</code>
-            <code row="14" col="2">"show:"</code>
-            <code row="14" col="3">True</code>
-            <code row="15" col="1">"yaxis:"</code>
-            <code row="15" col="2">"decimalsInFloat:"</code>
-            <code row="15" col="3">0</code>
-            <code row="16" col="1">"legend:"</code>
-            <code row="16" col="2">"position:"</code>
-            <code row="16" col="3">"right"</code>
-            <code row="17" col="2">"offset:"</code>
-            <code row="17" col="3">40</code>
-            <code row="18" col="1">"fill:"</code>
-            <code row="18" col="2">"opacity:"</code>
-            <code row="18" col="3">1</code>
-            <code row="19" col="1">"colors:"</code>
-            <code row="19" col="2">"#999999"</code>
-            <code row="19" col="3">"#00BB00"</code>
-            <code row="19" col="4">"#BB0000"</code>
-            <code row="20" col="1">"dataLabels:"</code>
-            <code row="20" col="2">"enabled:"</code>
-            <code row="20" col="3">False</code>
-            <code row="25" col="1">ToJson(GrowSE(options))</code>
+            <code row="7" col="4">T(#aggregate.yellow)</code>
+            <code row="8" col="2">"-"</code>
+            <code row="8" col="3">"name:"</code>
+            <code row="8" col="4">"shortfall"</code>
+            <code row="9" col="3">"data:"</code>
+            <code row="9" col="4">T(#aggregate.red)</code>
+            <code row="10" col="1">"chart:"</code>
+            <code row="10" col="2">"type:"</code>
+            <code row="10" col="3">"bar"</code>
+            <code row="11" col="2">"stacked:"</code>
+            <code row="11" col="3">True</code>
+            <code row="12" col="2">"toolbar:"</code>
+            <code row="12" col="3">"show:"</code>
+            <code row="12" col="4">True</code>
+            <code row="13" col="2">"zoom:"</code>
+            <code row="13" col="3">"enabled:"</code>
+            <code row="13" col="4">True</code>
+            <code row="14" col="1">"plotOptions:"</code>
+            <code row="14" col="2">"bar:"</code>
+            <code row="14" col="3">"horizontal:"</code>
+            <code row="14" col="4">False</code>
+            <code row="15" col="1">"xaxis:"</code>
+            <code row="15" col="2">"categories:"</code>
+            <code row="15" col="3">T(#aggregate.year)</code>
+            <code row="16" col="2">"show:"</code>
+            <code row="16" col="3">True</code>
+            <code row="17" col="1">"yaxis:"</code>
+            <code row="17" col="2">"decimalsInFloat:"</code>
+            <code row="17" col="3">0</code>
+            <code row="18" col="1">"legend:"</code>
+            <code row="18" col="2">"position:"</code>
+            <code row="18" col="3">"right"</code>
+            <code row="19" col="2">"offset:"</code>
+            <code row="19" col="3">40</code>
+            <code row="20" col="1">"fill:"</code>
+            <code row="20" col="2">"opacity:"</code>
+            <code row="20" col="3">1</code>
+            <code row="21" col="1">"colors:"</code>
+            <code row="21" col="2">"#999999"</code>
+            <code row="21" col="3">"#00BB00"</code>
+            <code row="21" col="4">"#BBBB00"</code>
+            <code row="21" col="5">"#BB0000"</code>
+            <code row="22" col="1">"dataLabels:"</code>
+            <code row="22" col="2">"enabled:"</code>
+            <code row="22" col="3">False</code>
+            <code row="27" col="1">ToJson(GrowSE(options))</code>
             <styles/>
             <node name="projection" type="ApexCharts">
                 <config name="options">chart.json</config>
