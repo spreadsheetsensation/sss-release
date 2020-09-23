@@ -20,7 +20,7 @@
             <styles/>
         </sheet>
         <sheet name="chart">
-            <label name="json" row="23" col="1"/>
+            <label name="json" row="25" col="1"/>
             <label name="options" row="2" col="1"/>
             <code row="2" col="1">"series:"</code>
             <code row="2" col="2">"-"</code>
@@ -56,15 +56,24 @@
             <code row="13" col="1">"xaxis:"</code>
             <code row="13" col="2">"categories:"</code>
             <code row="13" col="3">T(#aggregate.year)</code>
-            <code row="14" col="1">"legend:"</code>
-            <code row="14" col="2">"position:"</code>
-            <code row="14" col="3">"right"</code>
-            <code row="15" col="2">"offset:"</code>
-            <code row="15" col="3">40</code>
-            <code row="16" col="1">"fill:"</code>
-            <code row="16" col="2">"opacity:"</code>
-            <code row="16" col="3">1</code>
-            <code row="23" col="1">ToJson(GrowSE(options))</code>
+            <code row="14" col="2">"show:"</code>
+            <code row="14" col="3">True</code>
+            <code row="15" col="1">"yaxis:"</code>
+            <code row="15" col="2">"decimalsInFloat:"</code>
+            <code row="15" col="3">0</code>
+            <code row="16" col="1">"legend:"</code>
+            <code row="16" col="2">"position:"</code>
+            <code row="16" col="3">"right"</code>
+            <code row="17" col="2">"offset:"</code>
+            <code row="17" col="3">40</code>
+            <code row="18" col="1">"fill:"</code>
+            <code row="18" col="2">"opacity:"</code>
+            <code row="18" col="3">1</code>
+            <code row="19" col="1">"colors:"</code>
+            <code row="19" col="2">"#999999"</code>
+            <code row="19" col="3">"#00BB00"</code>
+            <code row="19" col="4">"#BB0000"</code>
+            <code row="25" col="1">ToJson(GrowSE(options))</code>
             <styles/>
             <node name="projection" type="ApexCharts">
                 <config name="options">chart.json</config>
