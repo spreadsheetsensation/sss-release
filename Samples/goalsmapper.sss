@@ -5,6 +5,7 @@
         <sheet name="aggregate">
             <label name="gray" row="2" col="4"/>
             <label name="green" row="2" col="5"/>
+            <label name="neg_savings" row="2" col="10"/>
             <label name="pos_savings" row="2" col="7"/>
             <label name="red" row="2" col="9"/>
             <label name="savings" row="2" col="3"/>
@@ -23,6 +24,7 @@
             <code row="2" col="7">Where(#savings &gt; 0, #savings, 0)</code>
             <code row="2" col="8">Where(#shortfall &gt; #pos_savings, #pos_savings,#shortfall)</code>
             <code row="2" col="9">#shortfall - #yellow</code>
+            <code row="2" col="10">Where(#savings &lt; 0, -#savings, 0)</code>
             <styles/>
         </sheet>
         <sheet name="chart">
