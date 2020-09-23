@@ -73,6 +73,9 @@
             <code row="19" col="2">"#999999"</code>
             <code row="19" col="3">"#00BB00"</code>
             <code row="19" col="4">"#BB0000"</code>
+            <code row="20" col="1">"dataLabels:"</code>
+            <code row="20" col="2">"enabled:"</code>
+            <code row="20" col="3">False</code>
             <code row="25" col="1">ToJson(GrowSE(options))</code>
             <styles/>
             <node name="projection" type="ApexCharts">
@@ -88,17 +91,17 @@
             <code row="2" col="4">"medical"</code>
             <code row="2" col="5">"kids uni"</code>
             <code row="3" col="1">#year - Tile(1983)</code>
-            <code row="3" col="2">Range(20)+Tile(2020)</code>
-            <code row="3" col="3">Tile(20000) * Math.Pow(1.05, Range(20))</code>
-            <code row="12" col="5">10000</code>
-            <code row="13" col="5">10000</code>
-            <code row="14" col="4">Math.Pow(1.02,Range(9)) * Tile(5000)</code>
-            <code row="14" col="5">10000</code>
-            <code row="14" col="6">10000</code>
-            <code row="15" col="5">10000</code>
-            <code row="15" col="6">10000</code>
-            <code row="16" col="6">10000</code>
-            <code row="17" col="6">10000</code>
+            <code row="3" col="2">Range(30)+Tile(2020)</code>
+            <code row="3" col="3">Tile(20000) * Math.Pow(1.05, Range(30))</code>
+            <code row="12" col="5">50000</code>
+            <code row="13" col="5">50000</code>
+            <code row="14" col="4">Math.Pow(1.02,Range(19)) * Tile(5000)</code>
+            <code row="14" col="5">50000</code>
+            <code row="14" col="6">50000</code>
+            <code row="15" col="5">50000</code>
+            <code row="15" col="6">50000</code>
+            <code row="16" col="6">50000</code>
+            <code row="17" col="6">50000</code>
             <styles/>
         </sheet>
         <sheet name="income">
@@ -110,8 +113,8 @@
             <code row="7" col="4">"cpf"</code>
             <code row="7" col="5">"lotery"</code>
             <code row="8" col="1">#year  - Tile(1983)</code>
-            <code row="8" col="2">Range(20) + Tile(2020)</code>
-            <code row="8" col="3">Tile(30000) * Math.Pow(1.03, Range(15))</code>
+            <code row="8" col="2">Range(30) + Tile(2020)</code>
+            <code row="8" col="3">Tile(30000) * Math.Pow(1.03, Range(30))</code>
             <code row="22" col="4">50000\\50000</code>
             <code row="24" col="4">50000</code>
             <code row="25" col="4">50000</code>
@@ -119,7 +122,34 @@
             <code row="26" col="5">10000</code>
             <code row="27" col="4">50000</code>
             <code row="27" col="5">10000</code>
+            <code row="28" col="4">Ones(10,1)*50000</code>
             <styles/>
+        </sheet>
+        <sheet name="savings">
+            <label name="json" row="10" col="1"/>
+            <label name="options" row="2" col="1"/>
+            <code row="2" col="1">"series:"</code>
+            <code row="2" col="2">"-"</code>
+            <code row="2" col="3">"name:"</code>
+            <code row="2" col="4">"savings"</code>
+            <code row="3" col="3">"data:"</code>
+            <code row="3" col="4">T(#aggregate.savings)</code>
+            <code row="4" col="1">"xaxis:"</code>
+            <code row="4" col="2">"categories:"</code>
+            <code row="4" col="3">T(#aggregate.year)</code>
+            <code row="5" col="2">"show:"</code>
+            <code row="5" col="3">True</code>
+            <code row="6" col="1">"yaxis:"</code>
+            <code row="6" col="2">"decimalsInFloat:"</code>
+            <code row="6" col="3">0</code>
+            <code row="7" col="1">"chart:"</code>
+            <code row="7" col="2">"type:"</code>
+            <code row="7" col="3">"line"</code>
+            <code row="10" col="1">ToJson(GrowSE(#options))</code>
+            <styles/>
+            <node name="saving_line" type="ApexCharts">
+                <config name="options">savings.json</config>
+            </node>
         </sheet>
     </sheet>
 </sospreadsheet>
