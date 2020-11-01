@@ -20,12 +20,12 @@
             <code row="10" col="2">BottomRight(a,b)</code>
             <code row="11" col="1">"TopLeft(a,b)"</code>
             <code row="11" col="2">TopLeft(a,b)</code>
-            <code row="13" col="1">"GoRight(a)"</code>
-            <code row="13" col="2">GoRight(a)</code>
-            <code row="14" col="1">"GoDown(a)"</code>
-            <code row="14" col="2">GoDown(a)</code>
-            <code row="15" col="1">"GoBottomRight(a)"</code>
-            <code row="15" col="2">GoBottomRight(a)</code>
+            <code row="13" col="1">'GoE(a)</code>
+            <code row="13" col="2">GoE(a)</code>
+            <code row="14" col="1">'GoS(a)</code>
+            <code row="14" col="2">GoS(a)</code>
+            <code row="15" col="1">'GoSE(a)</code>
+            <code row="15" col="2">GoSE(a)</code>
             <styles/>
         </sheet>
         <sheet name="finances">
@@ -43,7 +43,7 @@
                 <style>
                     <topleft>incomes</topleft>
                     <bottomright>Z(incomes)</bottomright>
-                    <scode>styles:GoBottomRight(styles)</scode>
+                    <scode>styles:GoSE(styles)</scode>
                 </style>
             </styles>
         </sheet>
@@ -54,11 +54,11 @@
             <code row="2" col="1">"John"</code>
             <code row="2" col="2">50000</code>
             <code row="2" col="3">"He donates everything so he pays no taxes!"</code>
-            <code row="2" col="4">tax(john_income, 0, 20000\\30000)</code>
+            <code row="2" col="4">P.tax(john_income, 0, 20000\\30000)</code>
             <code row="3" col="1">"Jane"</code>
             <code row="3" col="2">80000</code>
             <code row="3" col="3">"3 kids, so tax = 50000 * 0.2"</code>
-            <code row="3" col="4">tax(jane_income, 3, 0)</code>
+            <code row="3" col="4">P.tax(jane_income, 3, 0)</code>
             <styles/>
         </sheet>
         <sheet name="tax">
