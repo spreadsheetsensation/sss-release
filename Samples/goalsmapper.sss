@@ -16,9 +16,9 @@
             <label name="total_income" row="2" col="1"/>
             <label name="year" row="2" col="0"/>
             <label name="yellow" row="2" col="8"/>
-            <code row="2" col="0">#income.year</code>
-            <code row="2" col="1">SumRow(GrowSE(income.income))</code>
-            <code row="2" col="2">SumRow(GrowSE(expense.expense))</code>
+            <code row="2" col="0">P.income.#year</code>
+            <code row="2" col="1">P.income.(SumRow(GrowSE(income)))</code>
+            <code row="2" col="2">SumRow(GrowSE(P.expense.expense))</code>
             <code row="2" col="3">CumSum(#total_income - #total_expense)</code>
             <code row="2" col="4">CwMin(#total_income, #total_expense)</code>
             <code row="2" col="5">#total_income - #gray - #pink</code>
@@ -39,27 +39,27 @@
             <code row="2" col="3">"name:"</code>
             <code row="2" col="4">"churn"</code>
             <code row="3" col="3">"data:"</code>
-            <code row="3" col="4">T(#aggregate.gray)</code>
+            <code row="3" col="4">T(P.aggregate.#gray)</code>
             <code row="4" col="2">"-"</code>
             <code row="4" col="3">"name:"</code>
             <code row="4" col="4">"surplus"</code>
             <code row="5" col="3">"data:"</code>
-            <code row="5" col="4">T(#aggregate.green)</code>
+            <code row="5" col="4">T(P.aggregate.#green)</code>
             <code row="6" col="2">"-"</code>
             <code row="6" col="3">"name:"</code>
             <code row="6" col="4">"use_savings"</code>
             <code row="7" col="3">"data:"</code>
-            <code row="7" col="4">T(#aggregate.yellow)</code>
+            <code row="7" col="4">T(P.aggregate.#yellow)</code>
             <code row="8" col="2">"-"</code>
             <code row="8" col="3">"name:"</code>
             <code row="8" col="4">"new_debt"</code>
             <code row="9" col="3">"data:"</code>
-            <code row="9" col="4">T(#aggregate.red)</code>
+            <code row="9" col="4">T(P.aggregate.#red)</code>
             <code row="10" col="2">'-</code>
             <code row="10" col="3">'name:</code>
             <code row="10" col="4">'repay_debt</code>
             <code row="11" col="3">'data:</code>
-            <code row="11" col="4">T(#aggregate.pink)</code>
+            <code row="11" col="4">T(P.aggregate.#pink)</code>
             <code row="12" col="1">"chart:"</code>
             <code row="12" col="2">"type:"</code>
             <code row="12" col="3">"bar"</code>
@@ -79,7 +79,7 @@
             <code row="17" col="4">False</code>
             <code row="18" col="1">"xaxis:"</code>
             <code row="18" col="2">"categories:"</code>
-            <code row="18" col="3">T(#aggregate.year)</code>
+            <code row="18" col="3">T(P.aggregate.#year)</code>
             <code row="19" col="2">"show:"</code>
             <code row="19" col="3">True</code>
             <code row="20" col="1">"yaxis:"</code>
@@ -105,7 +105,7 @@
             <code row="30" col="1">ToJson(GrowSE(options))</code>
             <styles/>
             <node name="projection" type="ApexCharts">
-                <config name="options">chart.json</config>
+                <config name="options">PP.chart.json</config>
             </node>
         </sheet>
         <sheet name="expense">
@@ -161,10 +161,10 @@
             <code row="2" col="3">"name:"</code>
             <code row="2" col="4">"savings"</code>
             <code row="3" col="3">"data:"</code>
-            <code row="3" col="4">T(#aggregate.savings)</code>
+            <code row="3" col="4">T(P.aggregate.#savings)</code>
             <code row="4" col="1">"xaxis:"</code>
             <code row="4" col="2">"categories:"</code>
-            <code row="4" col="3">T(#aggregate.year)</code>
+            <code row="4" col="3">T(P.aggregate.#year)</code>
             <code row="5" col="2">"show:"</code>
             <code row="5" col="3">True</code>
             <code row="6" col="1">"yaxis:"</code>
@@ -176,7 +176,7 @@
             <code row="10" col="1">ToJson(GrowSE(#options))</code>
             <styles/>
             <node name="saving_line" type="ApexCharts">
-                <config name="options">savings.json</config>
+                <config name="options">PP.savings.json</config>
             </node>
         </sheet>
     </sheet>
