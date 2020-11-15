@@ -2,10 +2,27 @@
     <options/>
     <sheet root="true">
         <styles/>
-        <node name="Apex Chart" type="ApexCharts">
-            <config name="options">"{ \"chart\": { \"type\": \"line\", \"width\": \"100%\" }, \"series\": [ { \"name\": \"sales\", \"data\": [ 30, 40, 35, 50, 49, 60, 70, 91, 125 ] } ], \"xaxis\": { \"categories\": [ 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999 ] } }"</config>
+        <node name="apex" type="ApexCharts">
+            <config name="options">data.json</config>
         </node>
-        <sheet name="sheet1">
+        <sheet name="data">
+            <label name="json" row="11" col="0"/>
+            <label name="source" row="0" col="0"/>
+            <code row="0" col="0">'chart:</code>
+            <code row="0" col="1">'type:</code>
+            <code row="0" col="2">'line</code>
+            <code row="1" col="1">'height:</code>
+            <code row="1" col="2">'100%</code>
+            <code row="2" col="0">'series:</code>
+            <code row="2" col="1">'-</code>
+            <code row="2" col="2">'name:</code>
+            <code row="2" col="3">'sales</code>
+            <code row="3" col="2">'data:</code>
+            <code row="3" col="3">30 &amp; 40 &amp; 35 &amp; 50 &amp; 49 &amp; 60 &amp; 70 &amp; 91 &amp; 125</code>
+            <code row="4" col="0">'xaxis:</code>
+            <code row="4" col="1">'categories:</code>
+            <code row="4" col="2">1991 &amp; 1992 &amp; 1993 &amp; 1994 &amp; 1995 &amp; 1996 &amp; 1997 &amp; 1998 &amp; 1999</code>
+            <code row="11" col="0">ToJson(source:GoSE(source))</code>
             <styles/>
         </sheet>
     </sheet>

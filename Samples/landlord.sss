@@ -1,0 +1,63 @@
+<sospreadsheet>
+    <options/>
+    <sheet root="true">
+        <styles/>
+        <sheet name="accounting">
+            <label name="tariff" row="0" col="1"/>
+            <code row="0" col="0">consumption(8, 2, 1)</code>
+            <code row="0" col="1">"Tarif"</code>
+            <code row="2" col="1">#income.income</code>
+            <styles/>
+        </sheet>
+        <sheet name="consumption">
+            <label name="Return" row="1" col="0"/>
+            <label name="X0" row="0" col="0"/>
+            <label name="X1" row="0" col="1"/>
+            <label name="X2" row="0" col="2"/>
+            <label name="current" row="0" col="1"/>
+            <label name="income" row="8" col="3"/>
+            <label name="previous" row="0" col="2"/>
+            <label name="tariff" row="0" col="0"/>
+            <label name="year" row="8" col="2"/>
+            <code row="1" col="0">tariff * (current - previous)</code>
+            <code row="1" col="2">#label</code>
+            <code row="7" col="1">"age"</code>
+            <code row="7" col="2">Date()</code>
+            <code row="7" col="3">"Income"</code>
+            <code row="8" col="1">#year  - Tile(1983)</code>
+            <code row="8" col="2">Range(20) + Tile(2020)</code>
+            <code row="8" col="3">Tile(30000) * Math.Pow(1.03, Range(20))</code>
+            <code row="8" col="5">Range(11) * Fill(2)</code>
+            <code row="26" col="4">10000 \\ 10000</code>
+            <styles/>
+            <sheet name="object1">
+                <label name="current_gas" row="2" col="0"/>
+                <label name="previous_gas" row="2" col="1"/>
+                <code row="0" col="0">consumption(tariffs.gas, current_gas, previous_gas)</code>
+                <code row="1" col="0">"Current"</code>
+                <code row="1" col="1">"Previous"</code>
+                <code row="2" col="0">2</code>
+                <code row="2" col="1">1</code>
+                <code row="3" col="1">Min(a,b)</code>
+                <styles/>
+            </sheet>
+            <sheet name="object2">
+                <styles/>
+            </sheet>
+        </sheet>
+        <sheet name="tariffs">
+            <label name="electricity" row="2" col="0"/>
+            <label name="gas" row="1" col="0"/>
+            <label name="heating" row="3" col="0"/>
+            <label name="water" row="4" col="0"/>
+            <code row="0" col="0">"Consumables"</code>
+            <code row="0" col="1">"Units"</code>
+            <code row="1" col="0">1</code>
+            <code row="1" col="1">"$ / m3"</code>
+            <code row="2" col="0">0.12</code>
+            <code row="3" col="0">10</code>
+            <code row="4" col="0">1</code>
+            <styles/>
+        </sheet>
+    </sheet>
+</sospreadsheet>
